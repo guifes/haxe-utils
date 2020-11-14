@@ -1,4 +1,4 @@
-package extension;
+package guifes.extension;
 
 using tink.CoreApi;
 
