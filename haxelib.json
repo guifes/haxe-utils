@@ -1,0 +1,20 @@
+{
+	"name": "haxe-util",
+	"url" : "https://github.com/guifes/haxe-utils",
+	"license": "BSD",
+	"tags": ["flixel", "game", "utility"],
+	"description": "Haxe and HaxeFlixel related utilities and goodies.",
+	"version": "1.0.0",
+	"releasenote": "",
+	"contributors": ["guifes"],
+	"classPath": "source",
+	"dependencies": {
+		"flixel" : "",
+		"flixel-addons": "",
+		"tink_core": "",
+		"lime": "",
+		"openfl": "",
+		"polygonal-ds": "",
+		"polygonal-core": ""
+	}
+}
