@@ -1,8 +1,8 @@
 package guifes.math;
 
+import guifes.collection.IHashable;
 import haxe.Serializer;
 import haxe.Unserializer;
-import guifes.collection.IHashable;
 
 class Vector2i implements IComparable<Vector2i> implements IHashable
 {

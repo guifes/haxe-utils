@@ -1,4 +1,4 @@
-package guifes.extension;
+package guifes.flixel.extension;
 
 import guifes.math.Vector2i;
 import flixel.math.FlxPoint;

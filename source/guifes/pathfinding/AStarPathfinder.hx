@@ -7,8 +7,8 @@ import temp.PriorityQueue;
 import polygonal.ds.Prioritizable;
 import polygonal.ds.PriorityQueue;
 #end
-import util.collection.HashSet;
-import util.collection.IHashable;
+import guifes.collection.HashSet;
+import guifes.collection.IHashable;
 
 private class AStarNode<State, Transition> implements Prioritizable
 {

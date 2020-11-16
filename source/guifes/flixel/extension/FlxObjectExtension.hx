@@ -1,4 +1,4 @@
-package guifes.extension;
+package guifes.flixel.extension;
 
 import flixel.FlxObject;
 

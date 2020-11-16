@@ -1,4 +1,4 @@
-package util.collection;
+package guifes.collection;
 
 interface IHashable
 {
