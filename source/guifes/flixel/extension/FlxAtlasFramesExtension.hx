@@ -6,8 +6,11 @@ import haxe.Json;
 import haxe.io.Path;
 import lime.utils.Assets;
 import openfl.display.BitmapData;
+
+#if (cpp || hl)
 import sys.FileSystem;
 import sys.io.File;
+#end
 
 private typedef TexturePackerMeta = {
 	image: String
@@ -34,11 +37,14 @@ class FlxAtlasFramesExtension
 		try
 		{
 			return FlxAtlasFrames.fromTexturePackerJson('${dir}/${data.meta.image}', Description);
-		} catch (e:Exception)
+		}
+		catch (e:Exception)
 		{
 			return null;
 		}
 	}
+
+	#if (cpp || hl)
 
 	static public function fromTexturePackerJsonFile(cl: Class<FlxAtlasFrames>, path: String): FlxAtlasFrames
 	{
@@ -71,4 +77,6 @@ class FlxAtlasFramesExtension
 			return null;
 		}
 	}
+
+	#end
 }
