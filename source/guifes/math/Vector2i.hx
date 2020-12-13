@@ -26,7 +26,7 @@ class Vector2i implements IComparable<Vector2i> implements IHashable
 
 	private function get_magnitude(): Float
 	{
-		return Trigonometry.hypot(x, y);
+		return MathUtil.hypot(x, y);
 	}
 
 	private function get_inverse(): Vector2i
