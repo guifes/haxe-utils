@@ -3,9 +3,9 @@ package guifes.flixel.extension;
 import guifes.math.Vector2i;
 import flixel.math.FlxPoint;
 
-class Vector2iExtension
+class FlxPointExtension
 {
-	static public function toPoint(vector: Vector2i): FlxPoint
+	static public function fromVector2i(self: Class<FlxPoint>, vector: Vector2i): FlxPoint
 	{
 		return new FlxPoint(vector.x, vector.y);
 	}
