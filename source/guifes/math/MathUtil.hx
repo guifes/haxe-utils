@@ -26,6 +26,16 @@ class MathUtil
         return 0.5 * Math.log((1 + t) / (1 - t));
     }
 
+    public static function roundDecimal(value:Float, precision:Int)
+    {
+        var mult: Float = 1;
+
+		for (i in 0...precision)
+			mult *= 10;
+		
+		return Math.fround(value * mult) / mult;
+    }
+
     public static function hypot(leg_a: Float, leg_b: Float): Float
     {
         var sq_leg_a = Math.pow(leg_a, 2);
