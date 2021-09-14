@@ -1,4 +1,4 @@
-package source.guifes.macro;
+package guifes.macro;
 
 import haxe.macro.Context;
 import haxe.macro.Expr;
