@@ -36,6 +36,22 @@ class MathUtil
 		return Math.fround(value * mult) / mult;
     }
 
+	public static function wrap(value: Int, min: Int, max: Int): Int
+    {
+        var range: Int = max - min + 1;
+
+        if (value < min)
+            value += range * Std.int((min - value) / range + 1);
+
+        return min + (value - min) % range;
+    }
+
+    public static inline function bound(Value: Float, ?Min: Float, ?Max: Float): Float
+    {
+        var lowerBound: Float = (Min != null && Value < Min) ? Min : Value;
+        return (Max != null && lowerBound > Max) ? Max : lowerBound;
+    }
+
     public static function hypot(leg_a: Float, leg_b: Float): Float
     {
         var sq_leg_a = Math.pow(leg_a, 2);
