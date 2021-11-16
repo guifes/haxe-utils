@@ -226,8 +226,6 @@ class AStarPathfinder<State: (IComparable<State> & IHashable), Transition>
 			searchNode = searchNode.parent;
 		}
 
-		list.reverse();
-
 		return list;
 	}
 }
