@@ -66,21 +66,16 @@ class AStarPathfinder<State: (IComparable<State> & IHashable), Transition>
 {
 	// A* Pathfinding Algorithm implementation
 
-	private var map: IPathfinderDataSource<State, Transition>;
+	public function new() {}
 
-	public function new(_map: IPathfinderDataSource<State, Transition>)
-	{
-		map = _map;
-	}
-
-	public function getShortestPath(fromState: State, toState: State, collision: Bool = false, debug: Bool = false): Array<Transition>
+	public function getShortestPath(map: IPathfinderDataSource<State, Transition>, fromState: State, toState: State, collision: Bool = false, debug: Bool = false): Array<Transition>
 	{
 		var bestNode: AStarNode<State, Transition> = null;
 		var openList: PriorityQueue<AStarNode<State, Transition>> = new PriorityQueue<AStarNode<State, Transition>>(true);
 		var openListDictionary: Map<State, AStarNode<State, Transition>> = new Map<State, AStarNode<State, Transition>>();
 		var closedSet: HashSet<State> = new HashSet<State>();
 
-		var startNode: AStarNode<State, Transition> = createSearchNode(null, null, fromState, toState); // Create node for origin
+		var startNode: AStarNode<State, Transition> = createSearchNode(map, null, null, fromState, toState); // Create node for origin
 
 		openList.enqueue(startNode);
 		openListDictionary.set(fromState, startNode); // Insert the node in the open list
@@ -113,7 +108,7 @@ class AStarPathfinder<State: (IComparable<State> & IHashable), Transition>
 
 				if (!closedSet.exists(child) && !isNodeInFrontier) // If following state isn't in the closed list and is not in the open list too
 				{
-					var searchNode: AStarNode<State, Transition> = createSearchNode(node, transition, child, toState);
+					var searchNode: AStarNode<State, Transition> = createSearchNode(map, node, transition, child, toState);
 
 					openList.enqueue(searchNode);
 					openListDictionary.set(searchNode.state, searchNode);
@@ -124,7 +119,7 @@ class AStarPathfinder<State: (IComparable<State> & IHashable), Transition>
 				else if(isNodeInFrontier) // Replaces node score if it's lower
 				{
 					var openListNode: AStarNode<State, Transition> = openListDictionary.get(child);
-					var searchNode: AStarNode<State, Transition> = createSearchNode(node, transition, child, toState);
+					var searchNode: AStarNode<State, Transition> = createSearchNode(map, node, transition, child, toState);
 
 					if (openListNode.f > searchNode.f)
 					{
@@ -145,7 +140,7 @@ class AStarPathfinder<State: (IComparable<State> & IHashable), Transition>
 		return null;
 	}
 
-	public function getMovementRange(fromState: State, movementRange: Int, debug: Bool = false): HashSet<State>
+	public function getMovementRange(map: IPathfinderDataSource<State, Transition>, fromState: State, movementRange: Int, debug: Bool = false): HashSet<State>
 	{
 		var openList: PriorityQueue<AStarMovementNode<State, Transition>> = new PriorityQueue<AStarMovementNode<State, Transition>>();
 		var openListDictionary: Map<State, AStarMovementNode<State, Transition>> = new Map<State, AStarMovementNode<State, Transition>>();
@@ -200,7 +195,7 @@ class AStarPathfinder<State: (IComparable<State> & IHashable), Transition>
 		return closedSet;
 	}
 
-	private function createSearchNode(parent: AStarNode<State, Transition>, transition: Transition, state: State, toState: State): AStarNode<State, Transition>
+	private function createSearchNode(map: IPathfinderDataSource<State, Transition>, parent: AStarNode<State, Transition>, transition: Transition, state: State, toState: State): AStarNode<State, Transition>
 	{
 		if(parent != null)
 		{
