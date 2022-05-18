@@ -58,4 +58,36 @@ class MathUtil
         var sq_leg_b = Math.pow(leg_b, 2);
         return Math.sqrt(sq_leg_a + sq_leg_b);
     }
+
+    public static function imin(a: Float, b: Float): Int
+    {
+        return Std.int(Math.min(a, b));
+    }
+
+    public static function imax(a: Float, b: Float): Int
+    {
+        return Std.int(Math.max(a, b));
+    }
+
+    public static function nearestPowerOf2(v: Int)
+    {
+        v--;
+        v |= v >> 1;
+        v |= v >> 2;
+        v |= v >> 4;
+        v |= v >> 8;
+        v |= v >> 16;
+        v++;
+    }
+
+    public static function randomInRange(higherThan: Float, lowerThan: Float)
+    {
+        var diff = lowerThan - higherThan;
+		return (Math.random() * diff) + higherThan;
+    }
+
+    public static function degreesToRadians(value: Float)
+    {
+        return (Math.PI / 180) * value;
+    }
 }
