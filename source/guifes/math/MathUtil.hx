@@ -85,9 +85,4 @@ class MathUtil
         var diff = lowerThan - higherThan;
 		return (Math.random() * diff) + higherThan;
     }
-
-    public static function degreesToRadians(value: Float)
-    {
-        return (Math.PI / 180) * value;
-    }
 }
