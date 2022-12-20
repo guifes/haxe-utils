@@ -79,10 +79,4 @@ class MathUtil
         v |= v >> 16;
         v++;
     }
-
-    public static function randomInRange(higherThan: Float, lowerThan: Float)
-    {
-        var diff = lowerThan - higherThan;
-		return (Math.random() * diff) + higherThan;
-    }
 }
